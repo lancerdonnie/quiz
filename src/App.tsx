@@ -1,23 +1,18 @@
-import logo from './logo.svg';
-import './App.css';
+import { Switch, Route } from 'react-router-dom';
+import Quiz from 'pages/Quiz';
+import Editor from 'pages/Editor/Editor';
+import NavBar from 'layout/NavBar';
+import Attempt from 'pages/Attempt';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="App h-screen overflow-auto flex flex-col">
+      <NavBar />
+      <Switch>
+        <Route component={Quiz} exact path="/" />
+        <Route component={Editor} path="/editor" />
+        <Route component={Attempt} path="/quiz/:id" />
+      </Switch>
     </div>
   );
 }
