@@ -27,27 +27,24 @@ const Attempt = () => {
               <div>
                 {q.options.map((o) => {
                   return (
-                    <>
-                      <Option
-                        checked={answers.find((ans) => ans.id === q.id)?.value === o.value ? true : false}
-                        key={o.value}
-                        data={o}
-                        name={q.id}
-                        onChange={() => {
-                          const copy = [...answers];
-                          copy.forEach((a) => {
-                            if (a.id === q.id) {
-                              a.value = o.value;
-                            }
-                          });
-                          setAnswers(copy);
-                        }}
-                      />
-                      {answers.find}
-                    </>
+                    <Option
+                      disabled={done}
+                      checked={answers.find((ans) => ans.id === q.id)?.value === o.value ? true : false}
+                      key={o.value}
+                      data={o}
+                      name={q.id}
+                      onChange={() => {
+                        const copy = [...answers];
+                        copy.forEach((a) => {
+                          if (a.id === q.id) {
+                            a.value = o.value;
+                          }
+                        });
+                        setAnswers(copy);
+                      }}
+                    />
                   );
                 })}
-                {/* {done && <div>{answers.find()}</div>} */}
               </div>
             </div>
           );
@@ -58,32 +55,44 @@ const Attempt = () => {
       ) : (
         <button
           onClick={() => {
-            if (answers.some((ans) => ans)) return; //toast no answer on one
+            if (answers.some((ans) => !ans.value)) return; //toast no answer on one
             setDone(true);
           }}
         >
           Submit
         </button>
       )}
+      {done && (
+        <div>
+          scored {answers.filter((ans) => ans.answer === ans.value).length} out of {answers.length}
+        </div>
+      )}
+      <div>
+        <button
+          onClick={() => {
+            setAnswers(
+              quiz.quiz.map((e) => ({ id: e.id, value: '', answer: e.options.find((op) => op.answer === true)?.value }))
+            );
+            setDone(false);
+          }}
+        >
+          Restart
+        </button>
+      </div>
     </div>
   );
 };
 
 const Option = ({
   data,
-  name,
-  onChange,
-  checked,
+  ...props
 }: {
   data: OptionType;
-  name: string;
-  checked: boolean;
-  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
-}) => {
+} & React.InputHTMLAttributes<HTMLElement>) => {
   return (
     <div>
       {data.value}
-      <input id={data.value} value={data.value} checked={checked} name={name} type="radio" onChange={onChange} />
+      <input id={data.value} value={data.value} type="radio" {...props} />
     </div>
   );
 };
