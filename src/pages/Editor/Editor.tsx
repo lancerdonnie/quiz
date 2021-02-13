@@ -1,10 +1,14 @@
 import type { QuizType } from 'types';
 import React, { useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from 'redux/reducer';
 import EditorModal from './EditorModal';
+import Container from 'layout/Container';
+import Button from 'components/Button';
+import { DeleteQuiz } from 'redux/actions';
 
 const Editor = () => {
+  const dispatch = useDispatch();
   const quizzes: QuizType[] = useSelector((state: RootState) => state.quizzes);
   const [open, setOpen] = useState(false);
 
@@ -12,30 +16,45 @@ const Editor = () => {
     setOpen(true);
   };
 
-  if (!quizzes.length)
-    return (
-      <div>
-        <div>
-          Click the add button to add a quiz-set <button onClick={handleButtonClick}>Add</button>
-        </div>
-        {open && <EditorModal close={() => setOpen(false)} />}
-      </div>
-    );
   return (
-    <div>
-      <button onClick={handleButtonClick}>Add</button>
-      <div>
-        {quizzes.map((e) => {
-          return (
-            <div key={e.name}>
-              <span>{e.name}</span>
-              <span className="ml-2">View</span>
-            </div>
-          );
-        })}
-      </div>
+    <Container>
+      {!quizzes.length ? (
+        <div className="flex flex-col items-center justify-center h-full">
+          <div className="text-xl mb-4">You have no quizzes yet. Add a quiz</div>
+          <div>
+            <Button hoverColor="purple" icon="plus" onClick={handleButtonClick}>
+              Add Quiz
+            </Button>
+          </div>
+        </div>
+      ) : (
+        <div>
+          <Button hoverColor="purple" icon="plus" onClick={handleButtonClick}>
+            Add Quiz
+          </Button>
+          <div className="mt-4">
+            {quizzes.map(({ id, name }) => {
+              return (
+                <div key={id} className="flex items-center break-words mb-2">
+                  <span className="font-semibold w-60 inline-block">{name}</span>
+                  <Button icon="eye" hoverColor="indigo" className="ml-2">
+                    View
+                  </Button>
+                  <i
+                    className="fa fa-trash cursor-pointer ml-3 text-red-600"
+                    onClick={() => {
+                      if (!window.confirm('Are you sure you want to delete this quiz?')) return;
+                      dispatch(DeleteQuiz(id));
+                    }}
+                  ></i>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      )}
       {open && <EditorModal close={() => setOpen(false)} />}
-    </div>
+    </Container>
   );
 };
 

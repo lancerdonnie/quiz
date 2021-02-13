@@ -1,5 +1,5 @@
 import type { QuizType } from 'types';
-import { ADDQUIZ } from './types';
+import { ADDQUIZ, DELETEQUIZ } from './types';
 
 type RootType = {
   quizzes: QuizType[];
@@ -94,6 +94,11 @@ const reducer = (state: RootType = initialState, action: { type: string; payload
       return {
         ...state,
         quizzes: [...state.quizzes, payload],
+      };
+    case DELETEQUIZ:
+      return {
+        ...state,
+        quizzes: state.quizzes.filter(({ id }) => id !== payload),
       };
     default:
       return state;

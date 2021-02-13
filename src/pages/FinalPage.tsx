@@ -30,7 +30,7 @@ const FinalPage = ({ answers }: Props) => {
           <i key={id} className={`fa fa-trophy text-${value === answer ? 'green' : 'red'}-400 text-3xl mr-1`}></i>
         ))}
       </div>
-      <div>
+      <div className="mt-8">
         <Link to="/">
           <Button hoverColor="blue" icon="home">
             Done

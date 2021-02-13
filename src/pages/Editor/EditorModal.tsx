@@ -4,6 +4,10 @@ import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { AddQuiz } from 'redux/actions';
 import { randomId } from 'utils';
+import Input from 'components/Input';
+import Button from 'components/Button';
+import QuestionsView from './QuestionsView';
+import Toast from 'components/Toast';
 
 type Props = {
   close: () => void;
@@ -11,7 +15,20 @@ type Props = {
 
 const EditorModal = ({ close }: Props) => {
   const dispatch = useDispatch();
-  const [state, setstate] = useState<QuizType>({ id: randomId(), name: '', quiz: [] });
+  const [state, setState] = useState<QuizType>({
+    id: randomId(),
+    name: '',
+    quiz: [
+      {
+        id: 'WAM_eNHT-slfZy4qY2jUC',
+        name: 'What is a bacteria',
+        options: [
+          { value: 'animal', answer: false },
+          { value: 'horse', answer: true },
+        ],
+      },
+    ],
+  });
 
   const [options, setOptions] = useState<OptionType[]>([]);
   const [optionsName, setOptionsName] = useState<string>('');
@@ -19,135 +36,126 @@ const EditorModal = ({ close }: Props) => {
 
   return (
     <Modal title="Create Quiz" close={close}>
-      <div>
-        <input
-          placeholder="Quiz Name"
-          value={state.name}
-          onChange={(e) => {
-            setstate({ ...state, name: e.target.value });
-          }}
-        />
-        <div>
-          <input
-            placeholder="Question Name"
-            value={questionName}
+      <div className="flex h-full pb-4">
+        <div className="flex-1 flex flex-col justify-center items-center">
+          <Input
+            placeholder="Quiz Name"
+            value={state.name}
             onChange={(e) => {
-              setquestionName(e.target.value);
+              setState({ ...state, name: e.target.value });
             }}
           />
-          <div className="radio-buttons">
-            {options.length < 5 && (
-              <div>
-                <input
-                  placeholder="Option"
-                  value={optionsName}
-                  onChange={(e) => {
-                    setOptionsName(e.target.value);
-                  }}
-                />
-                <button
-                  onClick={() => {
-                    if (!optionsName) {
-                      //toast
-                      return;
-                    }
-                    if (options.some((e) => e.value === optionsName)) {
-                      //toast
-                      return;
-                    }
-                    setOptions([...options, { value: optionsName, answer: false }]);
-                    setOptionsName('');
-                  }}
-                >
-                  Add Option
-                </button>
-              </div>
-            )}
-            {options.map((option) => {
-              return (
-                <div key={option.value}>
-                  <span>{option.value}</span>
-                  <input
-                    type="checkbox"
-                    checked={option.answer}
-                    onChange={() => {
-                      const r = options.map((e) => {
-                        e.answer = false;
-                        return e;
-                      });
-                      r.forEach((e) => {
-                        if (e.value === option.value) e.answer = true;
-                      });
-                      setOptions(r);
+          <div className="flex flex-col items-center justify-center border border-gray-300 rounded p-2">
+            <Input
+              placeholder="Question Name"
+              value={questionName}
+              onChange={(e) => {
+                setquestionName(e.target.value);
+              }}
+            />
+            <div className="radio-buttons">
+              {options.length < 5 && (
+                <div className="flex items-center">
+                  <Input
+                    placeholder="Option"
+                    value={optionsName}
+                    onChange={(e) => {
+                      setOptionsName(e.target.value);
                     }}
                   />
-                  <i
-                    className="fa fa-trash"
+                  <Button
+                    className="ml-2"
+                    icon="plus"
                     onClick={() => {
-                      setOptions((op) => op.filter((e) => e.value !== option.value));
+                      if (!optionsName) {
+                        Toast({ msg: 'Type in your desired option', type: 'warning' });
+                        return;
+                      }
+                      if (options.some((e) => e.value === optionsName)) {
+                        Toast({ msg: "You can't have duplicate options", type: 'warning' });
+                        return;
+                      }
+                      setOptions([...options, { value: optionsName, answer: false }]);
+                      setOptionsName('');
                     }}
-                  />
+                  >
+                    Add Option
+                  </Button>
                 </div>
-              );
-            })}
-          </div>
-          <button
-            onClick={() => {
-              if (!questionName) {
-                //toast
-                return;
-              }
-              if (options.length < 2) {
-                //toast
-                return;
-              }
-              if (!options.some((e) => e.answer === true)) {
-                //toast
-                return;
-              }
-              setstate({ ...state, quiz: [...state.quiz, { id: randomId(), name: questionName, options }] });
-              setquestionName('');
-              setOptions([]);
-            }}
-          >
-            Add
-          </button>
-        </div>
-        <div>
-          {state.quiz.map((e) => {
-            return (
-              <div key={e.name}>
-                <div>QuestionName: {e.name}</div>
-                <div>
-                  {e.options.map((f) => {
-                    return (
-                      <div key={f.value}>
-                        <span>{f.value}</span>
-                        <span>{f.answer ? 'Answer' : null}</span>
-                      </div>
-                    );
-                  })}
-                </div>
-                <i
-                  className="fa fa-trash"
-                  onClick={() => {
-                    setstate((st) => ({ ...st, quiz: st.quiz.filter((g) => g.name !== e.name) }));
-                  }}
-                />
+              )}
+              <div>
+                {options.map((option) => {
+                  return (
+                    <div key={option.value} className="flex items-center justify-center">
+                      <span>{option.value}</span>
+                      <Input
+                        className="ml-2"
+                        type="checkbox"
+                        checked={option.answer}
+                        onChange={() => {
+                          const r = options.map((e) => {
+                            e.answer = false;
+                            return e;
+                          });
+                          r.forEach((e) => {
+                            if (e.value === option.value) e.answer = true;
+                          });
+                          setOptions(r);
+                        }}
+                      />
+                      <i
+                        className="fa fa-trash ml-2 cursor-pointer text-red-700"
+                        onClick={() => {
+                          setOptions((op) => op.filter((e) => e.value !== option.value));
+                        }}
+                      />
+                    </div>
+                  );
+                })}
               </div>
-            );
-          })}
+            </div>
+            <Button
+              className="mt-2"
+              icon="plus"
+              hoverColor="blue"
+              onClick={() => {
+                if (!questionName) {
+                  Toast({ msg: 'Please add a question name', type: 'warning' });
+                  return;
+                }
+                if (options.length < 2) {
+                  Toast({ msg: 'Please add at least two options', type: 'warning' });
+                  return;
+                }
+                if (!options.some((e) => e.answer === true)) {
+                  Toast({ msg: 'Please pick one option as the answer to your question', type: 'warning' });
+                  return;
+                }
+                setState({ ...state, quiz: [...state.quiz, { id: randomId(), name: questionName, options }] });
+                setquestionName('');
+                setOptions([]);
+              }}
+            >
+              Add
+            </Button>
+          </div>
+          <div className="mt-4">
+            <Button
+              icon="clipboard-list"
+              hoverColor="green"
+              onClick={() => {
+                if (!state.quiz.length) return Toast({ msg: 'The quiz should have at least one question', type: 'warning' });
+                if (!state.name) return Toast({ msg: 'Please enter a name for your quiz', type: 'warning' });
+                dispatch(AddQuiz(state));
+                close();
+              }}
+            >
+              Submit
+            </Button>
+          </div>
         </div>
-        <button
-          onClick={() => {
-            if (!state.name) return; //toast
-            if (!state.quiz.length) return; //toast
-            dispatch(AddQuiz(state));
-            close();
-          }}
-        >
-          Submit
-        </button>
+        <div className="w-0.5 bg-gray-200 h-full"></div>
+        <QuestionsView setState={setState} state={state} />
       </div>
     </Modal>
   );
