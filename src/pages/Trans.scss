@@ -1,0 +1,44 @@
+$time: 300ms;
+
+.trans {
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+}
+
+.b {
+  &.backward {
+    .trans-enter {
+      transform: translateY(100%);
+    }
+    .trans-enter-active {
+      transform: translateY(0%);
+      transition: transform 600ms ease 0s, background-color 300ms ease 0s;
+    }
+    .trans-exit {
+      transform: translateY(0%);
+    }
+    .trans-exit-active {
+      transition: transform 600ms ease 0s, background-color 300ms ease 0s;
+      transform: translateY(-100%);
+    }
+  }
+  &.forward {
+    .trans-enter {
+      transform: translateY(-100%);
+    }
+    .trans-enter-active {
+      transform: translateY(0%);
+      transition: transform 600ms ease 0s, background-color 300ms ease 0s;
+    }
+    .trans-exit {
+      transform: translateY(0%);
+    }
+    .trans-exit-active {
+      transition: transform 600ms ease 0s, background-color 300ms ease 0s;
+      transform: translateY(100%);
+    }
+  }
+}
