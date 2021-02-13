@@ -37,6 +37,13 @@ const FinalPage = ({ answers }: Props) => {
           </Button>
         </Link>
       </div>
+      <div className="mt-4">
+        <Link to="/history">
+          <Button hoverColor="pink" icon="folder">
+            History
+          </Button>
+        </Link>
+      </div>
     </div>
   );
 };

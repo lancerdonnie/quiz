@@ -1,4 +1,7 @@
+import Toast from 'components/Toast';
 import React from 'react';
+import { useDispatch } from 'react-redux';
+import { AddHistory } from 'redux/actions';
 import { QuizQuestionType } from 'types';
 
 type Props = {
@@ -10,11 +13,14 @@ type Props = {
   setDone: (e: any) => void;
   quiz: QuizQuestionType[];
   done: boolean;
+  id: string;
+  name: string;
 };
 
-const QuizFooter = ({ answers, count, setCount, quiz, setDir, setAnswers, done, setDone }: Props) => {
+const QuizFooter = ({ answers, count, setCount, quiz, setDir, setAnswers, done, setDone, id, name }: Props) => {
+  const dispatch = useDispatch();
   const lastQuestion = count === quiz.length - 1;
-  const finalPage = count === quiz.length;
+  // const finalPage = count === quiz.length;
 
   return (
     <div className="fixed bottom-0.5 left-0.5 w-full p-2 z-10 flex justify-between">
@@ -49,8 +55,16 @@ const QuizFooter = ({ answers, count, setCount, quiz, setDir, setAnswers, done, 
           <i
             className="fa fa-check cursor-pointer text-blue-900 bg-blue-300 hover:bg-blue-200 transition duration-100 ease-out p-2 rounded-r"
             onClick={() => {
-              if (answers.some((ans) => !ans.value)) return; //toast no answer on one
+              if (answers.some((ans) => !ans.value)) return Toast({ msg: 'Please answer all questions', type: 'warning' });
               if (!window.confirm('Are you sure you want to submit?')) return;
+              dispatch(
+                AddHistory({
+                  id,
+                  name,
+                  total: quiz.length,
+                  score: answers.filter(({ value, answer }) => value === answer).length,
+                })
+              );
               setDone(true);
               setCount(count + 1);
               setDir(false);

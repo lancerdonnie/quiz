@@ -3,6 +3,7 @@ import Quiz from 'pages/Quiz';
 import Editor from 'pages/Editor/Editor';
 import NavBar from 'layout/NavBar';
 import Attempt from 'pages/Attempt';
+import History from 'pages/History';
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
         <Route component={Quiz} exact path="/" />
         <Route component={Editor} path="/editor" />
         <Route component={Attempt} path="/quiz/:id" />
+        <Route component={History} path="/history" />
       </Switch>
     </div>
   );

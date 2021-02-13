@@ -77,6 +77,8 @@ const Attempt = () => {
         </TransitionGroup>
       </div>
       <QuizFooter
+        id={id}
+        name={name}
         answers={answers}
         count={count}
         done={done}

@@ -6,11 +6,14 @@ import EditorModal from './EditorModal';
 import Container from 'layout/Container';
 import Button from 'components/Button';
 import { DeleteQuiz } from 'redux/actions';
+import EditorQuizViewer from './EditorQuizViewer';
 
 const Editor = () => {
   const dispatch = useDispatch();
   const quizzes: QuizType[] = useSelector((state: RootState) => state.quizzes);
   const [open, setOpen] = useState(false);
+  const [viewerData, setViewerData] = useState<QuizType>();
+  const [openViewer, setOpenViewer] = useState(false);
 
   const handleButtonClick = (e: React.MouseEvent) => {
     setOpen(true);
@@ -37,7 +40,15 @@ const Editor = () => {
               return (
                 <div key={id} className="flex items-center break-words mb-2">
                   <span className="font-semibold w-60 inline-block">{name}</span>
-                  <Button icon="eye" hoverColor="indigo" className="ml-2">
+                  <Button
+                    icon="eye"
+                    hoverColor="indigo"
+                    className="ml-2"
+                    onClick={() => {
+                      setViewerData(quizzes.find((quiz) => quiz.id === id));
+                      setOpenViewer(true);
+                    }}
+                  >
                     View
                   </Button>
                   <i
@@ -54,6 +65,7 @@ const Editor = () => {
         </div>
       )}
       {open && <EditorModal close={() => setOpen(false)} />}
+      {openViewer && viewerData && <EditorQuizViewer data={viewerData} close={() => setOpenViewer(false)} />}
     </Container>
   );
 };

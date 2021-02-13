@@ -1,5 +1,5 @@
-import type { QuizType } from 'types';
-import { ADDQUIZ, DELETEQUIZ } from './types';
+import type { QuizHistory, QuizType } from 'types';
+import { ADDQUIZ, DELETEQUIZ, ADDHISTORY } from './types';
 
 export const AddQuiz = (quiz: QuizType) => {
   return {
@@ -7,9 +7,17 @@ export const AddQuiz = (quiz: QuizType) => {
     payload: quiz,
   };
 };
+
 export const DeleteQuiz = (id: string) => {
   return {
     type: DELETEQUIZ,
     payload: id,
+  };
+};
+
+export const AddHistory = (data: Omit<QuizHistory, 'time'>) => {
+  return {
+    type: ADDHISTORY,
+    payload: { ...data, time: new Date() },
   };
 };

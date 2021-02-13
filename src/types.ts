@@ -10,3 +10,11 @@ export type QuizType = {
   name: string;
   quiz: QuizQuestionType[];
 };
+
+export type QuizHistory = {
+  id: string;
+  name: string;
+  score: number;
+  total: number;
+  time: Date;
+};
