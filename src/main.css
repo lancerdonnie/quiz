@@ -573,6 +573,21 @@ video {
   }
 }
 
+.navbutton:hover {
+  --tw-bg-opacity: 1;
+  background-color: rgba(156, 163, 175, var(--tw-bg-opacity));
+}
+
+.navbutton {
+  border-radius: 0.25rem;
+  padding: 0.375rem;
+}
+
+.navbutton:hover {
+  --tw-text-opacity: 1;
+  color: rgba(255, 255, 255, var(--tw-text-opacity));
+}
+
 .space-y-0 > :not([hidden]) ~ :not([hidden]) {
   --tw-space-y-reverse: 0;
   margin-top: calc(0px * calc(1 - var(--tw-space-y-reverse)));
@@ -11202,16 +11217,8 @@ video {
   clear: none;
 }
 
-.font-sans {
-  font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-}
-
-.font-serif {
-  font-family: ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
-}
-
-.font-mono {
-  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+.font-roboto {
+  font-family: Roboto, sans-serif;
 }
 
 .font-thin {
@@ -13981,20 +13988,8 @@ video {
   min-height: 100vh;
 }
 
-.min-w-0 {
-  min-width: 0px;
-}
-
-.min-w-full {
-  min-width: 100%;
-}
-
-.min-w-min {
-  min-width: min-content;
-}
-
-.min-w-max {
-  min-width: max-content;
+.min-w-250 {
+  min-width: 250px;
 }
 
 .object-contain {
@@ -39799,16 +39794,8 @@ video {
     clear: none;
   }
 
-  .sm\:font-sans {
-    font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-  }
-
-  .sm\:font-serif {
-    font-family: ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
-  }
-
-  .sm\:font-mono {
-    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  .sm\:font-roboto {
+    font-family: Roboto, sans-serif;
   }
 
   .sm\:font-thin {
@@ -42578,20 +42565,8 @@ video {
     min-height: 100vh;
   }
 
-  .sm\:min-w-0 {
-    min-width: 0px;
-  }
-
-  .sm\:min-w-full {
-    min-width: 100%;
-  }
-
-  .sm\:min-w-min {
-    min-width: min-content;
-  }
-
-  .sm\:min-w-max {
-    min-width: max-content;
+  .sm\:min-w-250 {
+    min-width: 250px;
   }
 
   .sm\:object-contain {
@@ -68353,16 +68328,8 @@ video {
     clear: none;
   }
 
-  .md\:font-sans {
-    font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-  }
-
-  .md\:font-serif {
-    font-family: ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
-  }
-
-  .md\:font-mono {
-    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  .md\:font-roboto {
+    font-family: Roboto, sans-serif;
   }
 
   .md\:font-thin {
@@ -71132,20 +71099,8 @@ video {
     min-height: 100vh;
   }
 
-  .md\:min-w-0 {
-    min-width: 0px;
-  }
-
-  .md\:min-w-full {
-    min-width: 100%;
-  }
-
-  .md\:min-w-min {
-    min-width: min-content;
-  }
-
-  .md\:min-w-max {
-    min-width: max-content;
+  .md\:min-w-250 {
+    min-width: 250px;
   }
 
   .md\:object-contain {
@@ -96907,16 +96862,8 @@ video {
     clear: none;
   }
 
-  .lg\:font-sans {
-    font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-  }
-
-  .lg\:font-serif {
-    font-family: ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
-  }
-
-  .lg\:font-mono {
-    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  .lg\:font-roboto {
+    font-family: Roboto, sans-serif;
   }
 
   .lg\:font-thin {
@@ -99686,20 +99633,8 @@ video {
     min-height: 100vh;
   }
 
-  .lg\:min-w-0 {
-    min-width: 0px;
-  }
-
-  .lg\:min-w-full {
-    min-width: 100%;
-  }
-
-  .lg\:min-w-min {
-    min-width: min-content;
-  }
-
-  .lg\:min-w-max {
-    min-width: max-content;
+  .lg\:min-w-250 {
+    min-width: 250px;
   }
 
   .lg\:object-contain {
@@ -125461,16 +125396,8 @@ video {
     clear: none;
   }
 
-  .xl\:font-sans {
-    font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-  }
-
-  .xl\:font-serif {
-    font-family: ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
-  }
-
-  .xl\:font-mono {
-    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  .xl\:font-roboto {
+    font-family: Roboto, sans-serif;
   }
 
   .xl\:font-thin {
@@ -128240,20 +128167,8 @@ video {
     min-height: 100vh;
   }
 
-  .xl\:min-w-0 {
-    min-width: 0px;
-  }
-
-  .xl\:min-w-full {
-    min-width: 100%;
-  }
-
-  .xl\:min-w-min {
-    min-width: min-content;
-  }
-
-  .xl\:min-w-max {
-    min-width: max-content;
+  .xl\:min-w-250 {
+    min-width: 250px;
   }
 
   .xl\:object-contain {
@@ -154015,16 +153930,8 @@ video {
     clear: none;
   }
 
-  .\32xl\:font-sans {
-    font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-  }
-
-  .\32xl\:font-serif {
-    font-family: ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
-  }
-
-  .\32xl\:font-mono {
-    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  .\32xl\:font-roboto {
+    font-family: Roboto, sans-serif;
   }
 
   .\32xl\:font-thin {
@@ -156794,20 +156701,8 @@ video {
     min-height: 100vh;
   }
 
-  .\32xl\:min-w-0 {
-    min-width: 0px;
-  }
-
-  .\32xl\:min-w-full {
-    min-width: 100%;
-  }
-
-  .\32xl\:min-w-min {
-    min-width: min-content;
-  }
-
-  .\32xl\:min-w-max {
-    min-width: max-content;
+  .\32xl\:min-w-250 {
+    min-width: 250px;
   }
 
   .\32xl\:object-contain {

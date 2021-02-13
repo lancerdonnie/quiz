@@ -39,6 +39,48 @@ export const initialState: RootType = {
             },
           ],
         },
+        {
+          id: 'jdwdiudnd',
+          name: 'Who is the president',
+          options: [
+            {
+              value: 'Olusegun Obasanjo',
+              answer: false,
+            },
+            {
+              value: 'Muhammadu Buhari',
+              answer: true,
+            },
+            {
+              value: 'Aisha Buhari',
+              answer: false,
+            },
+            {
+              value: 'Atiku',
+              answer: false,
+            },
+          ],
+        },
+      ],
+    },
+    {
+      id: 'MC63y2fEeAekSuYNMxrPz',
+      name: 'fwf',
+      quiz: [
+        {
+          id: 'eo1mqURHaUMSbryYQXY9l',
+          name: 'wff',
+          options: [
+            {
+              value: 'Are you okay',
+              answer: false,
+            },
+            {
+              value: 'wdd',
+              answer: true,
+            },
+          ],
+        },
       ],
     },
   ],
@@ -51,7 +93,7 @@ const reducer = (state: RootType = initialState, action: { type: string; payload
     case ADDQUIZ:
       return {
         ...state,
-        quizzes: payload,
+        quizzes: [...state.quizzes, payload],
       };
     default:
       return state;

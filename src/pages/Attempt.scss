@@ -15,13 +15,13 @@ $time: 300ms;
     }
     .trans-enter-active {
       transform: translateY(0%);
-      transition: transform 600ms ease 0s, background-color 300ms ease 0s;
+      transition: transform 600ms ease 0s, opacity 300ms ease 0s, background-color 300ms ease 0s;
     }
     .trans-exit {
       transform: translateY(0%);
     }
     .trans-exit-active {
-      transition: transform 600ms ease 0s, background-color 300ms ease 0s;
+      transition: transform 600ms ease 0s, opacity 300ms ease 0s, background-color 300ms ease 0s;
       transform: translateY(-100%);
     }
   }
@@ -31,13 +31,13 @@ $time: 300ms;
     }
     .trans-enter-active {
       transform: translateY(0%);
-      transition: transform 600ms ease 0s, background-color 300ms ease 0s;
+      transition: transform 600ms ease 0s, opacity 300ms ease 0s, background-color 300ms ease 0s;
     }
     .trans-exit {
       transform: translateY(0%);
     }
     .trans-exit-active {
-      transition: transform 600ms ease 0s, background-color 300ms ease 0s;
+      transition: transform 600ms ease 0s, opacity 300ms ease 0s, background-color 300ms ease 0s;
       transform: translateY(100%);
     }
   }
