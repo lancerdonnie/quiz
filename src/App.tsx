@@ -4,10 +4,12 @@ import Editor from 'pages/Editor/Editor';
 import NavBar from 'layout/NavBar';
 import Attempt from 'pages/Attempt';
 import History from 'pages/History';
+import Splash from 'pages/Splash/Splash';
 
 function App() {
   return (
     <div className="App h-screen overflow-auto flex flex-col">
+      <Splash />
       <NavBar />
       <Switch>
         <Route component={Quiz} exact path="/" />
