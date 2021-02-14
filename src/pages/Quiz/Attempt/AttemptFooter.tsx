@@ -7,10 +7,10 @@ import { AddHistory } from 'redux/actions';
 type Props = {
   answers: Answer[];
   count: number;
-  setCount: (e: any) => void;
-  setDir: (e: any) => void;
-  setAnswers: (e: any) => void;
-  setDone: (e: any) => void;
+  setCount: React.Dispatch<React.SetStateAction<number>>;
+  setDir: React.Dispatch<React.SetStateAction<boolean>>;
+  setAnswers: React.Dispatch<React.SetStateAction<Answer[]>>;
+  setDone: React.Dispatch<React.SetStateAction<boolean>>;
   quiz: QuizQuestionType[];
   done: boolean;
   id: string;
