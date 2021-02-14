@@ -24,5 +24,5 @@ A simple quiz app
 
 #### Live Url
 
-Url: [Rule Validation Api](https://rulevalidationproject.herokuapp.com/)
+Url: [Quiz by lancer](https://quizbylancer.netlify.app/)
 Instructions: [Instructions](https://www.notion.so/FE-Work-Sample-9f32335bb5cd4f0eacab59bcd08ba3d6)
