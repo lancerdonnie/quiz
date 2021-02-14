@@ -1,5 +1,6 @@
 import React from 'react';
 import { OptionType } from 'types';
+import './Option.scss';
 
 const Option = ({
   done,
@@ -16,8 +17,17 @@ const Option = ({
 
   return (
     <div className="radio-input text-blue-700">
-      <input id={data.value} value={data.value} type="radio" {...props} />
-      <label className={`${cx} p-1 px-3 mr-10 inline-block w-full rounded transition duration-100 ease-out`} htmlFor={data.value}>
+      <input
+        className="p-0 mb-0 cursor-pointer hidden"
+        id={data.value}
+        value={data.value}
+        type="radio"
+        {...props}
+      />
+      <label
+        className={`${cx} relative cursor-pointer p-1 px-3 mr-10 inline-block w-full rounded transition duration-100 ease-out`}
+        htmlFor={data.value}
+      >
         {data.value}
       </label>
     </div>

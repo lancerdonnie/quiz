@@ -17,7 +17,7 @@ type Props = {
   name: string;
 };
 
-const QuizFooter = ({
+const AttemptFooter = ({
   answers,
   count,
   setCount,
@@ -119,4 +119,4 @@ const QuizFooter = ({
   );
 };
 
-export default QuizFooter;
+export default AttemptFooter;

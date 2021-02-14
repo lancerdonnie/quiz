@@ -4,8 +4,8 @@ import { useHistory, useParams } from 'react-router-dom';
 import { RootState } from 'redux/reducer';
 import { QuizType } from 'types';
 import FinalPage from './FinalPage';
-import QuizFooter from './QuizFooter';
-import Option from './Option';
+import QuizFooter from './AttemptFooter';
+import Option from 'components/Option/Option';
 import { useTransition, animated } from 'react-spring';
 
 const Attempt = () => {

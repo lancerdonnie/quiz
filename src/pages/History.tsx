@@ -1,11 +1,11 @@
+import type { QuizHistory } from 'types';
+import type { RootState } from 'redux/reducer';
 import Button from 'components/Button';
 import Divider from 'components/Divider';
 import Container from 'layout/Container';
 import React from 'react';
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { RootState } from 'redux/reducer';
-import { QuizHistory } from 'types';
 
 const History = () => {
   const history: QuizHistory[] = useSelector(({ history }: RootState) => history);

@@ -99,21 +99,25 @@ const reducer = (state: RootType = initialState, action: { type: string; payload
         ...state,
         quizzes: [...state.quizzes, payload],
       };
+
     case DELETEQUIZ:
       return {
         ...state,
         quizzes: state.quizzes.filter(({ id }) => id !== payload),
       };
+
     case ADDHISTORY:
       return {
         ...state,
         history: [...state.history, payload],
       };
+
     case SETSPLASH:
       return {
         ...state,
         showedSplash: payload,
       };
+
     default:
       return state;
   }

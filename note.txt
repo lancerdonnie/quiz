@@ -1,1 +1,3 @@
 animation //https://codepen.io/r00bal/details/JjKzoQg
+//https://codepen.io/nikkz/pen/BzVBJo
+input 

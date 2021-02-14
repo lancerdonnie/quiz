@@ -1,8 +1,8 @@
 import { Switch, Route, useLocation } from 'react-router-dom';
-import Quiz from 'pages/Quiz';
+import Quiz from 'pages/Quiz/Quiz';
 import Editor from 'pages/Editor/Editor';
 import NavBar from 'layout/NavBar';
-import Attempt from 'pages/Attempt';
+import Attempt from 'pages/Quiz/Attempt';
 import History from 'pages/History';
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';

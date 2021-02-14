@@ -18,8 +18,7 @@
     "react-spring": "^8.0.27",
     "redux": "^4.0.5",
     "tailwindcss": "^2.0.3",
-    "toasted-notes": "^3.2.0",
-    "web-vitals": "^1.1.0"
+    "toasted-notes": "^3.2.0"
   },
   "scripts": {
     "start": "npm run watch:css && react-scripts start",
