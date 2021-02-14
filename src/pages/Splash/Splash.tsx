@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import { useSpring, animated, useTrail } from 'react-spring';
-import './Splash.scss';
 
 const quiz = ['Q', 'u', 'i', 'z'];
 

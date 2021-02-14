@@ -1,38 +1,53 @@
 import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
 import { useHistory, useParams } from 'react-router-dom';
-import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import { RootState } from 'redux/reducer';
 import { QuizType } from 'types';
 import FinalPage from './FinalPage';
 import QuizFooter from './QuizFooter';
 import Option from './Option';
-import './Attempt.scss';
+import { useTransition, animated } from 'react-spring';
 
 const Attempt = () => {
   const { id: queryId } = useParams<{ id: string }>();
   const history = useHistory();
 
-  const [dir, setDir] = useState(true);
+  const [dir, setDir] = useState(false);
   const [done, setDone] = useState(false);
 
-  const { id, name, quiz }: QuizType = useSelector(({ quizzes }: RootState) => quizzes.find((e: QuizType) => e.id === queryId));
+  const { id, name, quiz }: QuizType = useSelector(({ quizzes }: RootState) =>
+    quizzes.find((e: QuizType) => e.id === queryId)
+  );
 
   const [answers, setAnswers] = useState<{ id: string; answer?: string; value: string }[]>(() => {
     if (!quiz) return [];
-    return quiz.map((e) => ({ id: e.id, value: '', answer: e.options.find((op) => op.answer === true)?.value }));
+    return quiz.map((e) => ({
+      id: e.id,
+      value: '',
+      answer: e.options.find((op) => op.answer === true)?.value,
+    }));
   });
 
   const [count, setCount] = useState(0);
+
+  const transitions = useTransition(count, (p) => p, {
+    from: () => ({ opacity: 1, transform: `translate3d(0,${dir ? '-' : ''}100vh,0)` }),
+    enter: { opacity: 1, transform: 'translate3d(0,0vh,0)' },
+    leave: () => ({ opacity: 1, transform: `translate3d(0,${dir ? '' : '-'}100vh,0)` }),
+  });
 
   if (!quiz) history.push('/');
 
   return (
     <div className="h-full flex flex-col">
-      <div className={`b ${dir ? 'forward' : 'backward'} h-screen absolute top-0 w-screen overflow-hidden bg-white`}>
-        <TransitionGroup component={null}>
-          <CSSTransition key={count} timeout={600} classNames="trans">
-            <div className={`h-full trans flex items-center justify-start`}>
+      <div className={`b h-screen fixed top-0 w-screen overflow-hidden bg-white`}>
+        {transitions.map(({ item: count, props, key }) => {
+          return (
+            <animated.div
+              key={key}
+              style={{ ...props }}
+              className={`h-full w-full flex items-center justify-start absolute`}
+            >
               {count !== quiz.length ? (
                 <div className="ml-10 relative">
                   <div className="text-xl mb-4">
@@ -45,7 +60,9 @@ const Attempt = () => {
                         <Option
                           done={done}
                           disabled={done}
-                          checked={answers.find((ans) => ans.id === quiz[count].id)?.value === o.value ? true : false}
+                          checked={
+                            answers.find((ans) => ans.id === quiz[count].id)?.value === o.value ? true : false
+                          }
                           key={o.value}
                           data={o}
                           name={quiz[count].id}
@@ -72,9 +89,9 @@ const Attempt = () => {
               ) : (
                 <FinalPage answers={answers} />
               )}
-            </div>
-          </CSSTransition>
-        </TransitionGroup>
+            </animated.div>
+          );
+        })}
       </div>
       <QuizFooter
         id={id}
