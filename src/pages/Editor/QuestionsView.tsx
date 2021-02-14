@@ -9,7 +9,7 @@ type Props = {
 
 const QuestionsView = ({ state, setState }: Props) => {
   return (
-    <div className="flex-1 flex flex-col items-center">
+    <div className="flex-1 flex flex-col items-center break-words sm:mt-6">
       <div className="text-lg font-bold">{state.name}</div>
       <div className="w-full p-2">
         {state.quiz.map((e, i) => {

@@ -34,7 +34,7 @@ const QuizFooter = ({
   // const finalPage = count === quiz.length;
 
   return (
-    <div className="fixed bottom-0.5 left-0.5 w-full p-2 z-10 flex justify-between">
+    <div className="fixed bottom-0.5 left-0.5 w-full p-2 z-10 flex justify-between items-end">
       <div>
         <span className="text-xs text-gray-500">
           {Math.floor(100 / (answers.length / answers.filter((e) => e.value).length))}% completed
@@ -48,7 +48,7 @@ const QuizFooter = ({
           ></div>
         </div>
       </div>
-      <div>
+      <div className="flex flex-wrap justify-center items-center">
         <i
           className={`fa fa-chevron-up cursor-pointer text-blue-900 bg-blue-300 hover:bg-blue-200 transition duration-100 ease-out p-2 rounded-l border-r border-solid border-gray-400  ${
             count === 0 ? 'pointer-events-none opacity-50' : ''
@@ -99,7 +99,7 @@ const QuizFooter = ({
         )}
         {done && (
           <i
-            className="ml-2 cursor-pointer fa fa-history text-blue-900 bg-blue-300 hover:bg-blue-200 transition duration-100 ease-out p-2 rounded"
+            className="ml-2 sm:ml-0 cursor-pointer fa fa-history text-blue-900 bg-blue-300 hover:bg-blue-200 transition duration-100 ease-out p-2 rounded"
             onClick={() => {
               setAnswers(
                 quiz.map((e) => ({

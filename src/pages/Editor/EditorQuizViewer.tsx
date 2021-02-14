@@ -2,13 +2,14 @@ import type { QuizType } from 'types';
 import Modal from 'components/Modal';
 
 type Props = {
+  open: boolean;
   close: () => void;
   data: QuizType;
 };
 
-const EditorQuizViewer = ({ close, data: { name, quiz } }: Props) => {
+const EditorQuizViewer = ({ open, close, data: { name, quiz } }: Props) => {
   return (
-    <Modal title={name} close={close}>
+    <Modal open={open} title={name} close={close}>
       <div className="flex flex-col h-full pb-4">
         {quiz.map(({ name, options }, i) => {
           return (

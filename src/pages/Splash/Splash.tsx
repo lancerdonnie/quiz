@@ -1,9 +1,13 @@
 import { useState } from 'react';
+import { useDispatch } from 'react-redux';
 import { useSpring, animated, useTrail } from 'react-spring';
+import { SetSplash } from 'redux/actions';
 
 const quiz = ['Q', 'u', 'i', 'z'];
 
 const Splash = () => {
+  const dispatch = useDispatch();
+
   const [toggle, setToggle] = useState(false);
   const [reverse, setReverse] = useState(false);
   const [mount, setMount] = useState(true);
@@ -30,6 +34,7 @@ const Splash = () => {
         setToggle(true);
         setTimeout(() => {
           setMount(false);
+          dispatch(SetSplash(true));
         }, 1000);
       } else {
         setReverse(true);
@@ -40,7 +45,7 @@ const Splash = () => {
   return mount ? (
     <animated.div
       style={props}
-      className="fixed top-0 h-screen w-screen bg-black splash text-white text-9xl flex items-center justify-center"
+      className="fixed top-0 left-0 h-screen w-screen bg-black splash text-white text-9xl flex items-center justify-center"
     >
       {trail.map(({ x, ...rest }, i) => (
         <animated.div

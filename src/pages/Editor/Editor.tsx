@@ -64,8 +64,10 @@ const Editor = () => {
           </div>
         </div>
       )}
-      {open && <EditorModal close={() => setOpen(false)} />}
-      {openViewer && viewerData && <EditorQuizViewer data={viewerData} close={() => setOpenViewer(false)} />}
+      <EditorModal open={open} close={() => setOpen(false)} />
+      {viewerData && (
+        <EditorQuizViewer open={openViewer} data={viewerData} close={() => setOpenViewer(false)} />
+      )}
     </Container>
   );
 };

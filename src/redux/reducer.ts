@@ -1,9 +1,10 @@
 import type { QuizHistory, QuizType } from 'types';
-import { ADDHISTORY, ADDQUIZ, DELETEQUIZ } from './types';
+import { ADDHISTORY, ADDQUIZ, DELETEQUIZ, SETSPLASH } from './types';
 
 type RootType = {
   quizzes: QuizType[];
   history: QuizHistory[];
+  showedSplash: boolean;
 };
 
 export const initialState: RootType = {
@@ -86,6 +87,7 @@ export const initialState: RootType = {
     },
   ],
   history: [],
+  showedSplash: false,
 };
 
 const reducer = (state: RootType = initialState, action: { type: string; payload?: any }) => {
@@ -106,6 +108,11 @@ const reducer = (state: RootType = initialState, action: { type: string; payload
       return {
         ...state,
         history: [...state.history, payload],
+      };
+    case SETSPLASH:
+      return {
+        ...state,
+        showedSplash: payload,
       };
     default:
       return state;

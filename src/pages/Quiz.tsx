@@ -4,22 +4,27 @@ import { RootState } from 'redux/reducer';
 import { Link } from 'react-router-dom';
 import Button from 'components/Button';
 import Container from 'layout/Container';
+import Splash from 'pages/Splash/Splash';
 
 const Quiz = () => {
   const quizzes: QuizType[] = useSelector((state: RootState) => state.quizzes);
+  const showedSplash: boolean = useSelector((state: RootState) => state.showedSplash);
 
   return (
     <Container>
+      {!showedSplash && <Splash />}
       {!quizzes.length ? (
-        <div className="h-full flex justify-center items-center">
+        <div className="h-full flex justify-center items-center sm:flex-col">
           <span>No quizzes available. Go to </span>
-          {
-            <Link to={`/editor`} className="mx-2 cursor-pointer">
-              <Button hoverColor="green" icon="text-width">
-                Editor
-              </Button>
-            </Link>
-          }
+          <span className="sm:my-2">
+            {
+              <Link to={`/editor`} className="mx-2 cursor-pointer">
+                <Button hoverColor="green" icon="text-width">
+                  Editor
+                </Button>
+              </Link>
+            }
+          </span>
           <span> to add a quiz?</span>
         </div>
       ) : (
