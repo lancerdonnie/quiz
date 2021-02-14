@@ -52,7 +52,7 @@ const Attempt = () => {
                 <div className="ml-10 relative">
                   <div className="text-xl mb-4">
                     <span className="absolute left-0 -ml-8">{count + 1}</span>
-                    <span>{quiz[count].name}</span>
+                    <span>{quiz[count].question}</span>
                   </div>
                   <div>
                     {quiz[count].options.map((o) => {

@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from 'redux/reducer';
 import EditorModal from './EditorModal';
 import Container from 'layout/Container';
-import Button from 'components/Button';
+import Button from 'components/Button/Button';
 import { DeleteQuiz } from 'redux/actions';
 import EditorQuizViewer from './EditorQuizViewer';
 

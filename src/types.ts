@@ -3,7 +3,7 @@ export type OptionType = {
   answer: boolean;
 };
 
-export type QuizQuestionType = { id: string; name: string; options: OptionType[] };
+export type QuizQuestionType = { id: string; question: string; options: OptionType[] };
 
 export type QuizType = {
   id: string;

@@ -1,4 +1,4 @@
-import Input from 'components/Input';
+import Input from 'components/Input/Input';
 import React from 'react';
 import { OptionType } from 'types';
 

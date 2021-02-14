@@ -2,7 +2,7 @@ import type { QuizType } from 'types';
 import type { RootState } from 'redux/reducer';
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-import Button from 'components/Button';
+import Button from 'components/Button/Button';
 import Container from 'layout/Container';
 import Splash from 'pages/Splash/Splash';
 

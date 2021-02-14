@@ -1,11 +1,11 @@
 import type { OptionType, QuizType } from 'types';
-import Modal from 'components/Modal';
+import Modal from 'components/Modal/Modal';
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { AddQuiz } from 'redux/actions';
 import { randomId } from 'utils';
-import Input from 'components/Input';
-import Button from 'components/Button';
+import Input from 'components/Input/Input';
+import Button from 'components/Button/Button';
 import QuestionsView from './QuestionsView';
 import Toast from 'components/Toast';
 import Options from './Options';
@@ -21,16 +21,7 @@ const EditorModal = ({ open, close }: Props) => {
   const [state, setState] = useState<QuizType>({
     id: randomId(),
     name: '',
-    quiz: [
-      {
-        id: 'WAM_eNHT-slfZy4qY2jUC',
-        name: 'What is a bacteria',
-        options: [
-          { value: 'animal', answer: false },
-          { value: 'horse', answer: true },
-        ],
-      },
-    ],
+    quiz: [],
   });
   const [options, setOptions] = useState<OptionType[]>([]);
   const [optionsName, setOptionsName] = useState<string>('');
@@ -64,7 +55,7 @@ const EditorModal = ({ open, close }: Props) => {
     }
     setState({
       ...state,
-      quiz: [...state.quiz, { id: randomId(), name: questionName, options }],
+      quiz: [...state.quiz, { id: randomId(), question: questionName, options }],
     });
     setquestionName('');
     setOptions([]);

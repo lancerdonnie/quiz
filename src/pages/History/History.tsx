@@ -1,6 +1,6 @@
 import type { QuizHistory } from 'types';
 import type { RootState } from 'redux/reducer';
-import Button from 'components/Button';
+import Button from 'components/Button/Button';
 import Divider from 'components/Divider';
 import Container from 'layout/Container';
 import React from 'react';

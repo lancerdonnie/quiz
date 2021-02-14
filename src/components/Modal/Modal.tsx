@@ -1,6 +1,6 @@
 import React from 'react';
-import Close from './Close';
-import Divider from './Divider';
+import Close from 'components/Close/Close';
+import Divider from 'components/Divider';
 import { animated, useTransition } from 'react-spring';
 
 type Props = {
@@ -23,6 +23,7 @@ const Modal = ({ open, close, title, children }: Props) => {
         ({ item, key, props }) =>
           item && (
             <div
+              key={item.toString()}
               style={{ background: 'rgba(0, 0, 0, 0.8)' }}
               className="fixed h-full top-0 right-0 left-0 bg-white p-4"
               onClick={(e) => {

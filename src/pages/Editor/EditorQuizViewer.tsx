@@ -1,5 +1,5 @@
 import type { QuizType } from 'types';
-import Modal from 'components/Modal';
+import Modal from 'components/Modal/Modal';
 
 type Props = {
   open: boolean;
@@ -11,11 +11,11 @@ const EditorQuizViewer = ({ open, close, data: { name, quiz } }: Props) => {
   return (
     <Modal open={open} title={name} close={close}>
       <div className="flex flex-col h-full pb-4">
-        {quiz.map(({ name, options }, i) => {
+        {quiz.map(({ question, options }, i) => {
           return (
             <div className="mb-4">
               <div>
-                {i + 1}. {name}
+                {i + 1}. {question}
               </div>
               <div>
                 {options.map(({ value, answer }) => {

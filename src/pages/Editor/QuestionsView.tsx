@@ -1,4 +1,4 @@
-import Button from 'components/Button';
+import Button from 'components/Button/Button';
 import React from 'react';
 import { QuizType } from 'types';
 
@@ -14,9 +14,9 @@ const QuestionsView = ({ state, setState }: Props) => {
       <div className="w-full p-2">
         {state.quiz.map((e, i) => {
           return (
-            <div key={e.name} className="mb-4">
+            <div key={e.id} className="mb-4">
               <div>
-                {i + 1}. {e.name}
+                {i + 1}. {e.question}
               </div>
               <div className="ml-1">
                 {e.options.map((f) => {
@@ -32,7 +32,7 @@ const QuestionsView = ({ state, setState }: Props) => {
                 className="mt-2 ml-4"
                 icon="trash"
                 onClick={() => {
-                  setState((st) => ({ ...st, quiz: st.quiz.filter((g) => g.name !== e.name) }));
+                  setState((st) => ({ ...st, quiz: st.quiz.filter((g) => g.id !== e.id) }));
                 }}
               >
                 Delete

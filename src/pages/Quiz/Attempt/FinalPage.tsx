@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import Button from 'components/Button';
+import Button from 'components/Button/Button';
 
 interface Props {
   answers: { id: string; answer?: string; value: string }[];
@@ -27,7 +27,10 @@ const FinalPage = ({ answers }: Props) => {
       <div className="font-bold">{getResult(score, total)}</div>
       <div className="mt-8">
         {answers.map(({ id, value, answer }) => (
-          <i key={id} className={`fa fa-trophy text-${value === answer ? 'green' : 'red'}-400 text-3xl mr-1`}></i>
+          <i
+            key={id}
+            className={`fa fa-trophy text-${value === answer ? 'green' : 'red'}-400 text-3xl mr-1`}
+          ></i>
         ))}
       </div>
       <div className="mt-8">
