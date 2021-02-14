@@ -1,10 +1,10 @@
+import type { RootState } from 'redux/reducer';
+import type { Answer, QuizType } from 'types';
 import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
 import { useHistory, useParams } from 'react-router-dom';
-import { RootState } from 'redux/reducer';
-import { QuizType } from 'types';
 import FinalPage from './FinalPage';
-import QuizFooter from './AttemptFooter';
+import AttemptFooter from './AttemptFooter';
 import Option from 'components/Option/Option';
 import { useTransition, animated } from 'react-spring';
 
@@ -19,7 +19,7 @@ const Attempt = () => {
     quizzes.find((e: QuizType) => e.id === queryId)
   );
 
-  const [answers, setAnswers] = useState<{ id: string; answer?: string; value: string }[]>(() => {
+  const [answers, setAnswers] = useState<Answer[]>(() => {
     if (!quiz) return [];
     return quiz.map((e) => ({
       id: e.id,
@@ -45,7 +45,7 @@ const Attempt = () => {
           return (
             <animated.div
               key={key}
-              style={{ ...props }}
+              style={props}
               className={`h-full w-full flex items-center justify-start absolute`}
             >
               {count !== quiz.length ? (
@@ -59,7 +59,6 @@ const Attempt = () => {
                       return (
                         <Option
                           done={done}
-                          disabled={done}
                           checked={
                             answers.find((ans) => ans.id === quiz[count].id)?.value === o.value ? true : false
                           }
@@ -78,7 +77,7 @@ const Attempt = () => {
                               setTimeout(() => {
                                 setDir(false);
                                 setCount(count + 1);
-                              }, 250);
+                              }, 150);
                             }
                           }}
                         />
@@ -93,7 +92,7 @@ const Attempt = () => {
           );
         })}
       </div>
-      <QuizFooter
+      <AttemptFooter
         id={id}
         name={name}
         answers={answers}

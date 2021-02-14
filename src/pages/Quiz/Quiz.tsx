@@ -1,6 +1,6 @@
 import type { QuizType } from 'types';
+import type { RootState } from 'redux/reducer';
 import { useSelector } from 'react-redux';
-import { RootState } from 'redux/reducer';
 import { Link } from 'react-router-dom';
 import Button from 'components/Button';
 import Container from 'layout/Container';

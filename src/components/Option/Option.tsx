@@ -22,6 +22,7 @@ const Option = ({
         id={data.value}
         value={data.value}
         type="radio"
+        disabled={done}
         {...props}
       />
       <label

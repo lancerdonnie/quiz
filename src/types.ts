@@ -18,3 +18,9 @@ export type QuizHistory = {
   total: number;
   time: Date;
 };
+
+export type Answer = {
+  id: string;
+  answer?: string;
+  value: string;
+};
