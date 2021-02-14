@@ -91,7 +91,7 @@ const EditorModal = ({ open, close }: Props) => {
                   setquestionName(e.target.value);
                 }}
               />
-              <div className="radio-buttons">
+              <div className="radio-buttons w-full">
                 {options.length < 5 && (
                   <div className="flex items-center">
                     <Input
