@@ -23,17 +23,17 @@ const Editor = () => {
     <Container>
       {!quizzes.length ? (
         <div className="flex flex-col items-center justify-center h-full">
-          <div className="text-xl mb-4">You have no quizzes yet. Add a quiz</div>
+          <div className="text-xl mb-4">You have no quizzes yet. Create a quiz</div>
           <div>
             <Button hoverColor="purple" icon="plus" onClick={handleButtonClick}>
-              Add Quiz
+              Create Quiz
             </Button>
           </div>
         </div>
       ) : (
         <div>
           <Button hoverColor="purple" icon="plus" onClick={handleButtonClick}>
-            Add Quiz
+            Create Quiz
           </Button>
           <div className="mt-4">
             {quizzes.map(({ id, name }) => {

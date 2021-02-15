@@ -102,7 +102,7 @@ const EditorModal = ({ open, close }: Props) => {
                       }}
                     />
                     <Button className="ml-2" icon="plus" onClick={onAddOption}>
-                      <span className="flex flex-col items-center">
+                      <span className="flex flex-col items-start">
                         <span>Add</span>
                         <span>Option</span>
                       </span>

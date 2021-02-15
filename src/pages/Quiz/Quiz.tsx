@@ -14,9 +14,9 @@ const Quiz = () => {
     <Container>
       {!showedSplash && <Splash />}
       {!quizzes.length ? (
-        <div className="h-full flex justify-center items-center sm:flex-col">
+        <div className="h-full flex flex-col justify-center items-center ">
           <span>No quizzes available. Go to </span>
-          <span className="sm:my-2">
+          <span className="my-2">
             {
               <Link to={`/editor`} className="mx-2 cursor-pointer">
                 <Button hoverColor="green" icon="text-width">
@@ -25,7 +25,7 @@ const Quiz = () => {
               </Link>
             }
           </span>
-          <span> to add a quiz?</span>
+          <span> to create a quiz</span>
         </div>
       ) : (
         <div>

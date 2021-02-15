@@ -10,7 +10,7 @@ const types = {
 };
 
 export const Toast = ({
-  duration = 2000,
+  duration = 3000,
   msg = 'Default message',
   type = 'default',
   className,

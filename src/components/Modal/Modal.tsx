@@ -36,7 +36,7 @@ const Modal = ({ open, close, title, children }: Props) => {
               >
                 <div className="px-4 py-2">{title}</div>
                 <Divider />
-                <div className="mt-4 px-4 flex-1 overflow-auto">{children}</div>
+                <div className="mt-4 px-4 flex-1 overflow-hidden break-all">{children}</div>
                 <Close onClick={close} />
               </animated.div>
             </div>
